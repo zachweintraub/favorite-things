@@ -1,3 +1,4 @@
+var numbers = [1, 2, 3, 4];
 var thingsArray = [];
 function addThing(thing) {
   thingsArray.push(thing);
@@ -8,18 +9,23 @@ $(function(){
 
   $('#favThings').submit(function(event){
       event.preventDefault();
-      addThing($('input#favThing1').val());
-      addThing($('input#favThing2').val());
-      addThing($('input#favThing3').val());
-      addThing($('input#favThing4').val());
-      var newArray = [];
-      newArray.push(thingsArray[1], thingsArray[0], thingsArray[2]);
-      //console.log(newArray);
+      numbers.forEach(function(number){
+        addThing($('input#favThing' + number).val());
+      });
+      // addThing($('input#favThing1').val());
+      // addThing($('input#favThing2').val());
+      // addThing($('input#favThing3').val());
+      // addThing($('input#favThing4').val());
+      // var newArray = [];
+      // newArray.push(thingsArray[1], thingsArray[0], thingsArray[2]);
       $('#favThings').hide();
       $('#output').append("<ol></ol>");
-      $('#output ol').append("<li>" + newArray[0] + "</li>");
-      $('#output ol').append("<li>" + newArray[1] + "</li>");
-      $('#output ol').append("<li>" + newArray[2] + "</li>");
+      thingsArray.forEach(function(thing) {
+        $('#output ol').append("<li>" + thing + "</li>");
+      });
+      // $('#output ol').append("<li>" + newArray[0] + "</li>");
+      // $('#output ol').append("<li>" + newArray[1] + "</li>");
+      // $('#output ol').append("<li>" + newArray[2] + "</li>");
   });
 
 });
